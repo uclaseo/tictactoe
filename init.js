@@ -1,5 +1,8 @@
 const prompt = require('prompt');
 
+  var colors = require("colors/safe");
+
+  prompt.message = colors.rainbow("YOUR MOVE!");
 
 const board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 
@@ -15,4 +18,7 @@ const viewBoard = () => {
 
 viewBoard();
 
-prompt.start();
+prompt.get(['Pick a Number'], function(error, result) {
+  console.log(result['what is your move']);
+})
+
