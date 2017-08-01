@@ -1,10 +1,9 @@
 const prompt = require('prompt');
+const colors = require("colors/safe");
 
-  var colors = require("colors/safe");
+prompt.message = colors.rainbow("YOUR MOVE!");
 
-  prompt.message = colors.rainbow("YOUR MOVE!");
-
-const board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+let board = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']];
 
 const viewBoard = () => {
   console.log('Current Board');
@@ -19,6 +18,29 @@ const viewBoard = () => {
 viewBoard();
 
 prompt.get(['Pick a Number'], function(error, result) {
-  console.log(result['what is your move']);
+  let number = result['Pick a Number'];
+  placeMove(number);
+  viewBoard();
 })
 
+const placeMove = (number) => {
+  if (number === '1') {
+    board[0][0] = '0'
+  } else if (number === '2') {
+    board[0][1] = '0'
+  } else if (number === '3') {
+    board[0][2] = '0'
+  } else if (number === '4') {
+    board[1][0] = '0'
+  } else if (number === 5) {
+    board[1][1] = '0'
+  } else if (number === '6') {
+    board[1][2] = '0'
+  } else if (number === '7') {
+    board[2][0] = '0'
+  } else if (number === '8') {
+    board[2][1] = '0'
+  } else if (number === '9') {
+    board[2][2] = '0'
+  }
+}
