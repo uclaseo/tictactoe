@@ -16,7 +16,29 @@ const viewBoard = () => {
 }
 
 
-const placeMove = (number) => {
+const placeXMove = (number) => {
+  if (number === '1') {
+    board[0][0] = 'X'
+  } else if (number === '2') {
+    board[0][1] = 'X'
+  } else if (number === '3') {
+    board[0][2] = 'X'
+  } else if (number === '4') {
+    board[1][0] = 'X'
+  } else if (number === '5') {
+    board[1][1] = 'X'
+  } else if (number === '6') {
+    board[1][2] = 'X'
+  } else if (number === '7') {
+    board[2][0] = 'X'
+  } else if (number === '8') {
+    board[2][1] = 'X'
+  } else if (number === '9') {
+    board[2][2] = 'X'
+  }
+};
+
+const placeOMove = (number) => {
   if (number === '1') {
     board[0][0] = '0'
   } else if (number === '2') {
@@ -42,14 +64,23 @@ const winCombinations = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9'], ['1'
 let isOver = false;
 viewBoard();
 
+let turn = true;
 const play = () => {
   prompt.start();
   prompt.get(['Pick a Number'], function(error, result) {
     let number = result['Pick a Number'];
-    placeMove(number);
+    if (turn) {
+      placeOMove(number);
+      turn = !turn;
+    } else if (!turn) {
+      placeXMove(number);
+      turn = !turn;
+    }
     viewBoard();
     if (!isOver) {
       play();
+    } else {
+      console.log('game over');
     }
   });
 };
